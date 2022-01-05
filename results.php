@@ -8,7 +8,7 @@ try {
     $conn->exec('SET NAMES utf8'); // SQL lause, et täpitähed oleksid loetavad
 
 
-    $sql = 'SELECT q.*, GROUP_CONCAT(" ", o.option_text ORDER BY o.option_id) AS answers, GROUP_CONCAT(" ", o.option_vote ORDER BY o.option_id) AS votes FROM questions q LEFT JOIN options o ON o.poll_id = q.poll_id WHERE poll_day < :poll_day GROUP BY q.poll_id DESC';
+    $sql = 'SELECT q.*, GROUP_CONCAT(" ", o.option_text ORDER BY o.option_id) AS answers, GROUP_CONCAT(" ", o.option_vote ORDER BY o.option_id) AS votes, SUM(o.option_vote) AS total FROM questions q LEFT JOIN options o ON o.poll_id = q.poll_id WHERE poll_day < :poll_day GROUP BY q.poll_id DESC';
     $stmt = $conn->prepare($sql);
     $stmt->bindParam('poll_day', $poll_day);
     $stmt->execute();
@@ -20,7 +20,7 @@ try {
 require 'templates/header.php'; ?>
 
 <div class="columns is-centered">
-    <div class="column is-half">
+    <div class="column is-two-thirds">
         <h1 class="title has-text-centered is-1">Päevaküsimuste tulemused</h1>
         <table class="table is-hoverable is-hoverable is-fullwidth">
             <thead>
@@ -28,7 +28,8 @@ require 'templates/header.php'; ?>
                     <th>Jrk</th>
                     <th>Päevaküsimus</th>
                     <th>Valikvastused</th>
-                    <th>Tulemused</th>
+                    <th class="has-text-centered">Tulemused</th>
+                    <th class="has-text-centered">Hääletajaid kokku</th>
                     <th class="has-text-centered">Küsitluse kuupäev</th>
                 </tr>
             </thead>
@@ -39,7 +40,8 @@ require 'templates/header.php'; ?>
                     <td><?= $jrk ?></td>
                     <td><a href="votes.php?poll_id=<?= $row['poll_id'] ?>"><?= $row['question']; ?></a></td>
                     <td><?= $row['answers']; ?></td>
-                    <td><?= $row['votes']; ?></td>
+                    <td class="has-text-centered"><?= $row['votes']; ?></td>
+                    <td class="has-text-centered"><?= $row['total'] ?></td>
                     <td class="has-text-centered"><?= dateToEst($row['poll_day']); ?></td>
                 </tr>
                 <?php $jrk++; ?>
