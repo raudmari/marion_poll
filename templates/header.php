@@ -11,8 +11,8 @@
     <script src="js/datepicker-et.js"></script> <!-- eesti keelne kalender-->
     <script src="https://kit.fontawesome.com/5055a03aa1.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/bulma.min.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" rel="stylesheet">
     <link rel="stylesheet" href="public/mystyles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" rel="stylesheet">
     <title>Päevaküsimus</title>
 </head>
 

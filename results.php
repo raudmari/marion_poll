@@ -3,6 +3,7 @@ require('config/config.php');
 require('config/common.php');
 $poll_day = date('Y-m-d', time());
 
+
 try {
     $conn = new PDO($dsn, USERNAME, PASSWORD, $options); // ühendus andmebaasiga
     $conn->exec('SET NAMES utf8'); // SQL lause, et täpitähed oleksid loetavad
@@ -21,6 +22,9 @@ require 'templates/header.php'; ?>
 
 <div class="columns is-centered">
     <div class="column is-two-thirds">
+        <?php if (empty($polls)) : ?>
+        <p class="has-text-centered">Päevaküsitluse tulemusi pole. Ükski päevaküsitlus pole veel lõppenud.</p>
+        <?php else : ?>
         <h1 class="title has-text-centered is-1">Päevaküsimuste tulemused</h1>
         <table class="table is-hoverable is-hoverable is-fullwidth">
             <thead>
@@ -48,6 +52,7 @@ require 'templates/header.php'; ?>
                 <?php endforeach; ?>
             </tbody>
         </table>
+        <?php endif; ?>
     </div>
 </div>
 
