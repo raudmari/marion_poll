@@ -5,12 +5,14 @@ require('config/common.php');
 try {
     $conn = new PDO($dsn, USERNAME, PASSWORD, $options); // ühendus andmebaasiga
     $conn->exec('SET NAMES utf8'); // SQL lause, et täpitähed oleksid loetavad
-    $sql = 'SELECT q.*, GROUP_CONCAT(" ", o.option_text ORDER BY o.option_id) AS answers FROM questions q LEFT JOIN options o ON o.poll_id = q.poll_id GROUP BY q.poll_id ORDER BY q.poll_day DESC';
-
+    $sql = 'SELECT q.*, GROUP_CONCAT(" ", o.option_text ORDER BY o.option_id) AS answers 
+        FROM questions q 
+        LEFT JOIN options o ON o.poll_id = q.poll_id 
+        GROUP BY q.poll_id 
+        ORDER BY q.poll_day DESC';
     $stmt = $conn->prepare($sql);
     $stmt->execute();
     $polls = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    //show($polls);
 } catch (PDOException $error) {
     echo $error->getMessage();
 }
@@ -23,6 +25,7 @@ require 'templates/header.php';
     <div class="column is-two-thirds">
         <?php if (empty($polls)) : ?>
         <p class="has-text-centered">Päevaküsimusi pole. Sisesta uus päevaküsimus.</p>
+        <?php else : ?>
         <h1 class="title has-text-centered is-1">Kõik päevaküsimused</h1>
         <table class="table is-hoverable is-hoverable is-fullwidth">
             <thead>
