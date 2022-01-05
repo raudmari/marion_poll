@@ -79,13 +79,15 @@ require 'templates/header.php';
             <div class="field">
                 <p class="has-text-centered"><?= $errors['general']; ?></p>
                 <label for="question" class="label">Päevaküsimus</label>
-                <input type="text" name="question" class="input" value="<?= $question; ?>" placeholder="Sisesta päevaküsimus">
+                <input type="text" name="question" class="input" value="<?= $question; ?>"
+                    placeholder="Sisesta päevaküsimus">
                 <div><?= $errors['question']; ?></div>
                 <label for="option_text" class="label">Valikvastused</label>
-                <textarea class="textarea" name="option_text" value="<?= $option_text; ?>" cols="80" rows="5" placeholder="Üks valikvastus rea kohta. Sisesta vähemalt kaks valikvastust."></textarea>
+                <textarea class="textarea" name="option_text" value="<?= $option_text; ?>" cols="80" rows="5"
+                    placeholder="Üks valikvastus rea kohta. Sisesta vähemalt kaks valikvastust."></textarea>
                 <p><?= $errors['option']; ?></p>
                 <label for="poll_day" class="label">Päevaküsimuse toimumise kuupäev</label>
-                <input type="text" name="poll_day" value="<?= $poll_day ?>" class="input mb-3" id="date">
+                <input type="date" name="poll_day" value="<?= $poll_day ?>" class="input mb-3" id="date">
                 <p><?= $errors['poll_day']; ?></p>
 
                 <input type="submit" name="submit" value="Lisa küsimus" class="button is-primary is-rounded">
@@ -94,13 +96,13 @@ require 'templates/header.php';
 </div>
 
 <script>
-    $(function() {
-        $("#date").datepicker({
-            dateFormat: 'yy-mm-dd', // kuupäeva vorming
-            minDate: 0 // eilset kuupäeva ei saa valida
-        });
-
+$(function() {
+    $("#date").datepicker({
+        dateFormat: 'yy-mm-dd', // kuupäeva vorming
+        minDate: 0 // eilset kuupäeva ei saa valida
     });
+
+});
 </script>
 
 <?php require 'templates/footer.php'; ?>

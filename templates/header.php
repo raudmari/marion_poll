@@ -10,9 +10,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script src="js/datepicker-et.js"></script> <!-- eesti keelne kalender-->
     <script src="https://kit.fontawesome.com/5055a03aa1.js" crossorigin="anonymous"></script>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/bulma.min.css">
     <link rel="stylesheet" href="public/mystyles.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" rel="stylesheet">
     <title>Päevaküsimus</title>
 </head>
 
@@ -32,7 +33,7 @@
                 <div class="navbar-start">
                     <a class="navbar-item" href="create.php">Uus päevaküsimus</a>
                     <a class="navbar-item" href="read.php">Kõik päevaküsimused</a>
-                    <a class="navbar-item" href="results.php">Tulemused</a>
+                    <a class="navbar-item" href="results.php">Küsitluste tulemused</a>
                 </div>
             </div>
         </div>
