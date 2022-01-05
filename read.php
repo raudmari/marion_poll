@@ -12,7 +12,6 @@ try {
     $stmt->execute();
     $polls = $stmt->fetchAll(PDO::FETCH_ASSOC);
     //show($polls);
-
 } catch (PDOException $error) {
     echo $error->getMessage();
 }
