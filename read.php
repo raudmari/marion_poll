@@ -10,7 +10,7 @@ try {
         FROM questions q 
         LEFT JOIN options o ON o.poll_id = q.poll_id 
         GROUP BY q.poll_id 
-        ORDER BY q.poll_day DESC';
+        ORDER BY q.poll_day ASC';
     $stmt = $conn->prepare($sql);
     $stmt->execute();
     $polls = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -67,7 +67,6 @@ require 'templates/header.php';
                     </td>
                 </tr>
                 <?php $jrk++; ?>
-
                 <?php endforeach; ?>
             </tbody>
         </table>
