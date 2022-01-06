@@ -1,6 +1,7 @@
 <?php
 require('config/config.php');
 require('config/common.php');
+$poll_day = date('Y-m-d', time());
 
 try {
     $conn = new PDO($dsn, USERNAME, PASSWORD, $options); // ühendus andmebaasiga
@@ -40,10 +41,12 @@ require 'templates/header.php';
             <tbody>
                 <?php $jrk = 1 ?>
                 <?php foreach ($polls as $row) : ?>
+                <?php if ($row['poll_day'] < $poll_day) : ?>
+                <?php continue; ?>
+                <?php endif; ?>
                 <tr>
                     <td><?= $jrk; ?></td>
-                    <td><?= $row['question']; ?>
-                    </td>
+                    <td><?= $row['question']; ?></td>
                     <td><?= $row['answers']; ?></td>
                     <td class="has-text-centered "><?= dateToEst($row['poll_day']) ?></td>
                     <td class="has-text-centered">
@@ -64,6 +67,7 @@ require 'templates/header.php';
                     </td>
                 </tr>
                 <?php $jrk++; ?>
+
                 <?php endforeach; ?>
             </tbody>
         </table>

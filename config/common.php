@@ -16,7 +16,7 @@ function show($array)
     echo '</pre>';
 }
 
-// Sünnikuupäeva format dd.mm.yyyy
+// Kuupäeva kuvamine Eesti päraselt ehk dd.mm.yyyy
 function dateToEst($datestr)
 {
     $dateParts = explode('-', $datestr); // tükeldatakse kriipsu kohalt
