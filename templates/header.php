@@ -18,7 +18,7 @@
 </head>
 
 <body>
-    <nav class="navbar is-primary mb-4">
+    <nav class="navbar is-dark mb-4" role="navigation" aria-label="main navigation">
         <div class="container">
             <div class="navbar-brand">
                 <a class="navbar-item" href="#">
@@ -28,8 +28,13 @@
                         </span>
                     </span>
                 </a>
+                <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarMenu">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                </a>
             </div>
-            <div class="navbar-menu">
+            <div id="navbarMenu" class="navbar-menu">
                 <div class="navbar-start">
                     <a class="navbar-item" href="create.php">Uus päevaküsimus</a>
                     <a class="navbar-item" href="read.php">Kõik päevaküsimused</a>
@@ -38,3 +43,16 @@
             </div>
         </div>
     </nav>
+    <script>
+    $(document).ready(function() {
+
+        // Check for click events on the navbar burger icon
+        $(".navbar-burger").click(function() {
+
+            // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+            $(".navbar-burger").toggleClass("is-active");
+            $(".navbar-menu").toggleClass("is-active");
+
+        });
+    });
+    </script>

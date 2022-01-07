@@ -81,26 +81,21 @@ require 'templates/header.php';
     <div class="column is-one-quarter">
         <div class="card">
             <div class="card-content cont">
-                <div class="content">
-                    <?php if ($errors) : ?>
-                    <p class="has-text-centered"><?= $errors ?></p>
-                    <?php else : ?>
-                    <h3 class="title"><?php echo $poll['question']; ?></h3>
-                    <form action="poll.php?poll_id=<?= $_GET['poll_id'] ?>" method="POST">
-                        <?php for ($i = 0; $i < count($poll_options); $i++) : ?>
-                        <label>
-                            <input type="radio" name="poll_answer" value="<?= $poll_options[$i]['option_id']; ?>"
-                                class="radio m-2" />
-                            <?= $poll_options[$i]['option_text']; ?>
-                        </label><br>
-                        <?php endfor; ?>
-                        <br>
-                        <input class="button is-rounded is-primary" type="submit" name="vote" value="Hääleta">
-                    </form>
-
-
-                </div>
-
+                <?php if ($errors) : ?>
+                <p class="has-text-centered"><?= $errors ?></p>
+                <?php else : ?>
+                <h3 class="title"><?php echo $poll['question']; ?></h3>
+                <form action="poll.php?poll_id=<?= $_GET['poll_id'] ?>" method="POST">
+                    <?php for ($i = 0; $i < count($poll_options); $i++) : ?>
+                    <label>
+                        <input type="radio" name="poll_answer" value="<?= $poll_options[$i]['option_id']; ?>"
+                            class="radio m-2" />
+                        <?= $poll_options[$i]['option_text']; ?>
+                    </label><br>
+                    <?php endfor; ?>
+                    <br>
+                    <input class="button is-rounded is-primary" type="submit" name="vote" value="Hääleta">
+                </form>
             </div>
         </div>
         <footer class="card-footer headfoot">

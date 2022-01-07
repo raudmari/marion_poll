@@ -33,33 +33,35 @@ require 'templates/header.php'; ?>
         <p class="has-text-centered">Päevaküsitluse tulemusi pole. Ükski päevaküsitlus pole lõppenud.</p>
         <?php else : ?>
         <h1 class="title has-text-centered is-1">Päevaküsimuste tulemused</h1>
-        <table class="table is-hoverable is-hoverable is-fullwidth">
-            <thead>
-                <tr>
-                    <th>Jrk</th>
-                    <th>Päevaküsimus</th>
-                    <th>Valikvastused</th>
-                    <th class="has-text-centered">Tulemused</th>
-                    <th class="has-text-centered">Hääletajaid kokku</th>
-                    <th class="has-text-centered">Küsitluse kuupäev</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php $jrk = 1 ?>
-                <?php foreach ($polls as $row) : ?>
-                <tr>
-                    <td><?= $jrk ?></td>
-                    <td><a href="votes.php?poll_id=<?= $row['poll_id'] ?>"><?= $row['question']; ?></a></td>
-                    <td><?= $row['answers']; ?></td>
-                    <td class="has-text-centered"><?= $row['votes']; ?></td>
-                    <td class="has-text-centered"><?= $row['total'] ?></td>
-                    <td class="has-text-centered"><?= dateToEst($row['poll_day']); ?></td>
-                </tr>
-                <?php $jrk++; ?>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
-        <?php endif; ?>
+        <div class="table-container">
+            <table class="table is-hoverable is-hoverable is-fullwidth headfoot">
+                <thead>
+                    <tr>
+                        <th>Jrk</th>
+                        <th>Päevaküsimus</th>
+                        <th>Valikvastused</th>
+                        <th class="has-text-centered">Tulemused</th>
+                        <th class="has-text-centered">Hääletajaid kokku</th>
+                        <th class="has-text-centered">Küsitluse kuupäev</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php $jrk = 1 ?>
+                    <?php foreach ($polls as $row) : ?>
+                    <tr>
+                        <td><?= $jrk ?></td>
+                        <td><a href="votes.php?poll_id=<?= $row['poll_id'] ?>"><?= $row['question']; ?></a></td>
+                        <td><?= $row['answers']; ?></td>
+                        <td class="has-text-centered"><?= $row['votes']; ?></td>
+                        <td class="has-text-centered"><?= $row['total'] ?></td>
+                        <td class="has-text-centered"><?= dateToEst($row['poll_day']); ?></td>
+                    </tr>
+                    <?php $jrk++; ?>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+            <?php endif; ?>
+        </div>
     </div>
 </div>
 
